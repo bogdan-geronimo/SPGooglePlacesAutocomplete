@@ -89,6 +89,7 @@
 
 - (void)getGeoPoint:(SPGooglePlacesResultBlock)block {
     SPGooglePlacesPlaceDetailQuery *query = [SPGooglePlacesPlaceDetailQuery query];
+    query.key = self.key;
     query.place_id = place_id;
     [query fetchPlaceDetail:^(NSDictionary *placeDictionary, NSError *error) {
         if (error) {
