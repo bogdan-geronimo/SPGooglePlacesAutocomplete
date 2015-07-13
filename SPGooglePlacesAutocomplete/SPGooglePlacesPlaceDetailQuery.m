@@ -14,6 +14,10 @@
 
 @implementation SPGooglePlacesPlaceDetailQuery
 
++ (SPGooglePlacesPlaceDetailQuery *)query {
+    return [[self alloc] init];
+}
+
 - (id)initWithApiKey:(NSString *)apiKey
 {
     self = [super init];

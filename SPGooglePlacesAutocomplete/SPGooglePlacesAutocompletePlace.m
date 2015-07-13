@@ -13,10 +13,13 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *reference;
 @property (nonatomic, strong) NSString *identifier;
+@property (nonatomic, retain, readwrite) NSString *place_id;
 @property (nonatomic) SPGooglePlacesAutocompletePlaceType type;
 @end
 
 @implementation SPGooglePlacesAutocompletePlace
+
+@synthesize place_id;
 
 + (SPGooglePlacesAutocompletePlace *)placeFromDictionary:(NSDictionary *)placeDictionary apiKey:(NSString *)apiKey
 {
@@ -24,6 +27,7 @@
     place.name = placeDictionary[@"description"];
     place.reference = placeDictionary[@"reference"];
     place.identifier = placeDictionary[@"id"];
+    place.place_id = [placeDictionary objectForKey:@"place_id"];
     place.type = SPPlaceTypeFromDictionary(placeDictionary);
     place.key = apiKey;
     return place;
@@ -83,5 +87,16 @@
     }
 }
 
+- (void)getGeoPoint:(SPGooglePlacesResultBlock)block {
+    SPGooglePlacesPlaceDetailQuery *query = [SPGooglePlacesPlaceDetailQuery query];
+    query.place_id = place_id;
+    [query fetchPlaceDetail:^(NSDictionary *placeDictionary, NSError *error) {
+        if (error) {
+            block(nil, error);
+        } else {
+            block(placeDictionary,nil);
+        }
+    }];
+}
 
 @end

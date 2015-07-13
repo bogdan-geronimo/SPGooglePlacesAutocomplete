@@ -17,6 +17,10 @@
 
 @implementation SPGooglePlacesAutocompleteQuery
 
++ (SPGooglePlacesAutocompleteQuery *)query {
+    return [[self alloc] init];
+}
+
 - (id)initWithApiKey:(NSString *)apiKey {
     self = [super init];
     if (self) {

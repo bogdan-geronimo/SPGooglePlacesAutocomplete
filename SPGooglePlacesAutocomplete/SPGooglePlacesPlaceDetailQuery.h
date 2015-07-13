@@ -15,6 +15,8 @@
 
 @property (nonatomic, copy, readonly) SPGooglePlacesPlaceDetailResultBlock resultBlock;
 
++ (SPGooglePlacesPlaceDetailQuery *)query;
+
 /*
  * Designated initializer
  * Must initialize an instance with a valid Google API key
@@ -43,6 +45,11 @@
  Your application's API key. This key identifies your application for purposes of quota management. Visit the APIs Console to select an API Project and obtain your key. Maps API for Business customers must use the API project created for them as part of their Places for Business purchase. Defaults to kGoogleAPIKey.
  */
 @property (nonatomic, strong) NSString *key;
+
+/*!
+ A textual identifier that uniquely identifies a place, returned from a Place search request.
+ */
+@property (nonatomic, retain) NSString *place_id;
 
 #pragma mark -
 #pragma mark Optional parameters

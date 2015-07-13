@@ -41,9 +41,12 @@
  */
 @property (nonatomic, strong) NSString *key;
 
+@property (nonatomic, retain, readonly) NSString *place_id;
+
 /*!
  Resolves the place to a CLPlacemark, issuing  Google Place Details request if needed.
  */
 - (void)resolveToPlacemark:(SPGooglePlacesPlacemarkResultBlock)block;
+- (void)getGeoPoint:(SPGooglePlacesResultBlock)block;
 
 @end
