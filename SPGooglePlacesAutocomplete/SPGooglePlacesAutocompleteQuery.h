@@ -17,6 +17,8 @@
 
 @property (nonatomic, copy, readonly) SPGooglePlacesAutocompleteResultBlock resultBlock;
 
++ (SPGooglePlacesAutocompleteQuery *)query;
+
 /*
  * Designated initializer
  * Must initialize an instance with a valid Google API key
